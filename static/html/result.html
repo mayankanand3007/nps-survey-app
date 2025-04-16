@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>NPS Survey Results | BridgeLabz Solutions</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- <div class="row mb-4 align-items-end text-left"> -->
+        <div class="d-flex flex-column flex-md-row align-items-end p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+            <div class="col-2 my-0 mr-md-auto font-weight-normal">
+                <a id="backLink" href="#" data-rel="back">
+                    <img src="{{ url_for('static', path='/images/bridgelabz_logo.svg') }}" class="img-fluid" alt="bridgelabz_logo" width="70%">
+                </a>
+            </div>
+            <div class="my-2 my-md-0 mr-md-3 ml-md-1">
+                <h1>NPS Survey Analytics Application</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <h1 class="row justify-content-center">Improvements</h1>
+                <table class="table table-bordered table-striped table-hover table-responsive">
+                    <thead style="background-color: #A5E8D4; color: #1AA078;">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Improvement Technology Name</th>
+                            <th scope="col">Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% set count = namespace(value=1) %}
+                        {% for key, value in impr_topics.items(): %}
+                        <tr>
+                            <td scope="col">{{ count.value }}</td>
+                            <td scope="col">{{ key }}</td>
+                            <td scope="col">{{ value }}</td>
+                        </tr>
+                        {% set count.value = count.value + 1 %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6">
+                <h1 class="row justify-content-center">Completions</h1>
+                <table class="table table-bordered table-striped table-hover table-responsive">
+                    <thead style="background-color: #A5E8D4; color: #1AA078;">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Confident Technology Name</th>
+                            <th scope="col">Count</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% set count = namespace(value=1) %}
+                        {% for key, value in conf_topics.items(): %}
+                        <tr>
+                            <td scope="col">{{ count.value }}</td>
+                            <td scope="col">{{ key }}</td>
+                            <td scope="col">{{ value }}</td>
+                        </tr>
+                        {% set count.value = count.value + 1 %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <!-- Word Cloud of Improvements -->
+            <div class="col-6">
+                <figure class="figure">
+                    <img src="{{ url_for('static', path='/images/improvement_tech_cloud.png') }}" class="img-fluid" alt="improvement_tech_cloud">
+                    <figcaption class="figure-caption text-center">Word Cloud of Technologies learner has to improve in.</figcaption>
+                </figure>
+            </div>
+            <!-- Word Cloud of Completions -->
+            <div class="col-6">
+                <figure class="figure">
+                    <img src="{{ url_for('static', path='/images/confident_tech_cloud.png') }}" class="img-fluid" alt="confident_tech_cloud">
+                    <figcaption class="figure-caption text-center">Word Cloud of Technologies learner is confident in.</figcaption>
+                </figure>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6 offset-3">
+                <figure class="figure">
+                    <img src="{{ url_for('static', path='/images/wave_rating_bar.png') }}" class="img-fluid" alt="wave_rating_bar">
+                    <figcaption class="figure-caption text-center">Bar Chart of Wave-wise Ratings.</figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script>
+        $("#backLink").click(function(event) {
+            event.preventDefault();
+            history.back();
+        });
+    </script>
+</body>
+</html>
