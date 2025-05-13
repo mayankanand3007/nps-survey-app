@@ -10,3 +10,4 @@ wordcloud==1.8.2.2
 pandas==1.5.2
 openpyxl==3.0.10
 python-Levenshtein==0.20.8
+numpy==1.26.4
