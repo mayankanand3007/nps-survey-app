@@ -24,8 +24,10 @@ import os
 import uvicorn
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
+import nltk
 logging.getLogger().setLevel(logging.ERROR)
 warnings.filterwarnings("ignore")
+nltk.download('punkt')
 
 # Global Variables
 # setting corpus fetching directories to invidual variable names
